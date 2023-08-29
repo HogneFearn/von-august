@@ -1,0 +1,45 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="von august">
+  <main
+    class="grid h-screen place-items-center bg-cover bg-no-repeat"
+    style="background-image: url('/bakgrunn_a.webp')"
+  >
+    <h1
+      class="text-5xl text-yellow-300 drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
+    >
+      lås opp for bonus :*
+    </h1>
+    <img src="door.png" />
+    <input
+      type="password"
+      id="password-input"
+      class="border rounded-3xl px-4 py-2 border-black"
+    />
+    <div
+      class="bg-gray-300 border-4 rounded-lg hover:scale-105 ease-in-out transition-transform border-b-gray-600 border-r-gray-600 border-t-gray-200 border-l-gray-200 py-2 px-4"
+    >
+      <button id="submit-button">Enter</button>
+    </div>
+  </main>
+
+  <script>
+    const passwordInput = document.getElementById(
+      "password-input"
+    ) as HTMLInputElement;
+    const submitButton = document.getElementById("submit-button");
+
+    submitButton &&
+      submitButton.addEventListener("click", () => {
+        const password = passwordInput?.value;
+
+        if (password === "tsuguanov") {
+          window.location.href = `/singalong`;
+        } else {
+          alert("Feil passord :*");
+        }
+      });
+  </script>
+</Layout>
