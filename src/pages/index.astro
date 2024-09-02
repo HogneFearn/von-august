@@ -1,51 +1,25 @@
 ---
-import Layout from "../layouts/Layout.astro";
+title: "Kommer snart ...";
 ---
 
-<Layout title="von august">
-  <main
-    class="min-h-screen bg-cover bg-no-repeat bg-pink-900 bg-opacity-30 bg-blend-overlay"
-    style="background-image: url('/bakgrunn_a.webp')"
-  >
-    <div class="grid place-items-center">
-      <h1
-        class="text-4xl md:text-5xl mt-12 text-yellow-300 drop-shadow-[0_5px_5px_rgba(255,81,168,0.6)]"
-      >
-        lås opp for bonus :*
-      </h1>
-      <img class="mt-8" src="door.png" />
-      <form class="text-center" id="password-form">
-        <input
-          type="password"
-          id="password-input"
-          class="border mt-8 rounded-3xl px-4 py-2 border-black"
-        />
-        <br />
+<style>
+  @font-face {
+    font-family: "BradfordLL";
+    src: url("/fonts/BradfordLL-Italic.otf") format("opentype");
+    font-weight: normal;
+    font-style: italic;
+  }
+  .bradford-italic {
+    font-family: "BradfordLL", sans-serif !important;
+    font-size: 2rem;
+  }
+</style>
 
-        <button
-          type="submit"
-          class="bg-gray-300 border-4 rounded-lg mt-8 hover:scale-105 ease-in-out transition-transform border-b-gray-600 border-r-gray-600 border-t-gray-200 border-l-gray-200 py-2 px-4"
-          id="submit-button">Enter</button
-        >
-      </form>
-    </div>
-  </main>
-
-  <script>
-    const passwordInput = document.getElementById(
-      "password-input"
-    ) as HTMLInputElement;
-    const passwordForm = document.getElementById("password-form");
-    passwordForm?.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const password = passwordInput?.value;
-
-      if (password === "kjeledyremit123") {
-        window.location.href = `/singalong`;
-      } else {
-        alert("Feil passord :*");
-      }
-    });
-  </script>
-</Layout>
+<section class="min-h-screen flex flex-col justify-between">
+  <div class="flex justify-center items-center flex-grow">
+    <h1 class="text-center bradford-italic">kommer snart<br />...</h1>
+  </div>
+  <footer class="flex justify-center items-center h-16">
+    <p class="bradford-italic">Von August &lt;3</p>
+  </footer>
+</section>
