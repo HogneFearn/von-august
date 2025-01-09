@@ -1,0 +1,113 @@
+---
+
+const navLinks = [
+    { href: '/#', text: 'new release: Take 3', target: "" },
+    { href: '/bio', text: 'bio', target: "" },
+    { href: '/live', text: 'live', target: "" },
+    { href: '/https://linktr.ee/vonaugust', text: 'listen', target:"_blank" },
+];
+
+---
+
+<!-- <div class="max-w-7xl w-full m-auto"> -->
+    <nav class="navbar text-xl flex justify-between items-center p-4 bradford-italic">
+        <a href="/" class="text-2xl">
+            von august
+        </a>
+
+        {
+            navLinks.length > 0 && (
+                <div class="flex ">
+                    <button
+                        class="menu-toggle w-8 h-8 flex items-center justify-center relative z-30 lg:hidden lg:w-0"
+                        aria-label="Open Menu"
+                        aria-expanded="false"
+                        aria-controls="menu-items"
+                    >
+                        <span class="menu-toggle-icon w-6 h-px relative bg-current" />
+                    </button>
+
+                    <ul id="menu-items" class="menu flex gap-6">
+                        {navLinks.map((link) => (
+                            <li class="py-1">
+                                <a
+                                    class="text-xl font-serif whitespace-nowrap text-main hover:underline hover:underline-offset-2 hover:decoration-1 "
+                                    href={link.href}
+                                    target={link.target}
+                                >
+                                    {link.text}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )
+        }
+    </nav>
+<!-- </div> -->
+
+<style>
+    @media (max-width: 1024px) {
+        .menu {
+            @apply flex-col gap-1 absolute md:top-full right-0 max-w-[256px] px-3 pt-16 pb-10 z-20 border border-dashed bg-black invisible opacity-0;
+            width: calc(100% + 1.25rem);
+        }
+        .menu.is-visible {
+            @apply visible opacity-100;
+            transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+        }
+        .menu-toggle {
+            @apply absolute right-0 top-0;
+        }
+        .menu-toggle-icon {
+            transition: width 0.1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+        }
+        .menu-toggle.is-active .menu-toggle-icon {
+            @apply w-0;
+            transition: width 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .menu-toggle-icon:before,
+        .menu-toggle-icon:after {
+            @apply w-6 h-px absolute left-1/2 top-0 origin-center -translate-x-1/2 bg-current;
+            content: '';
+            transition:
+                transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                margin 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+        }
+        .menu-toggle-icon:before {
+            @apply -mt-1.5;
+        }
+        .menu-toggle-icon:after {
+            @apply mt-1.5;
+        }
+        .menu-toggle.is-active .menu-toggle-icon:before,
+        .menu-toggle.is-active .menu-toggle-icon:after {
+            @apply mt-0;
+            transition:
+                margin 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
+                transform 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+        }
+        .menu-toggle.is-active .menu-toggle-icon:before {
+            @apply rotate-45;
+        }
+        .menu-toggle.is-active .menu-toggle-icon:after {
+            @apply -rotate-45;
+        }
+    }
+</style>
+
+<script>
+    function menuToggle() {
+        const menu = document.querySelector('.menu');
+        const menuToggleBtn = document.querySelector('.menu-toggle');
+        menuToggleBtn?.addEventListener('click', () => {
+            const isMenuExpanded = menuToggleBtn.getAttribute('aria-expanded') === 'true';
+            menuToggleBtn.classList.toggle('is-active');
+            menuToggleBtn.setAttribute('aria-expanded', isMenuExpanded ? 'false' : 'true');
+            menuToggleBtn.setAttribute('aria-label', isMenuExpanded ? 'Open Menu' : 'Close Menu');
+            menu?.classList.toggle('is-visible');
+        });
+    }
+    menuToggle();
+    document.addEventListener('astro:after-swap', menuToggle);
+</script>
