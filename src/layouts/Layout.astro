@@ -35,7 +35,7 @@ const { title } = Astro.props;
     }
     .bradford-italic {
       font-family: "BradfordLL", sans-serif !important;
-      font-size: 2rem; /* Adjusted default font size */
+      font-size: 1rem; /* Adjusted default font size */
       font-style: italic;
     }
     .social-icons a {
@@ -65,7 +65,7 @@ const { title } = Astro.props;
   <body class="container mx-auto bg-black text-white">
     <NavBar />
     <slot />
-  <div class="mt-8 text-sm space-y-2 text-center bradford-italic">
+  <div class="mt-8 space-y-2 text-center bradford-italic">
     <p>booking: <a href="mailto:leahdenardi@gmail.com">leahdenardi@gmail.com</a></p>
     <p>contact: <a href="mailto:vonaugustproject@gmail.com">vonaugustproject@gmail.com</a></p>
   </div>
@@ -102,7 +102,7 @@ const { title } = Astro.props;
       </a>
     </div>
 
-    <p class="bradford-italic text-sm md:text-lg">
+    <p class="bradford-italic md:text-lg">
       © von august {new Date().getFullYear()}
     </p>
   </footer>
