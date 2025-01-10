@@ -65,12 +65,12 @@ const { title } = Astro.props;
   <body class="container mx-auto bg-black text-white">
     <NavBar />
     <slot />
-  </body>
   <div class="mt-8 text-sm space-y-2 text-center bradford-italic">
     <p>booking: <a href="mailto:leahdenardi@gmail.com">leahdenardi@gmail.com</a></p>
     <p>contact: <a href="mailto:vonaugustproject@gmail.com">vonaugustproject@gmail.com</a></p>
   </div>
-  <footer class="text-lg flex flex-col justify-center items-center h-44">
+</body>
+  <footer class="md:text-lg flex flex-col justify-center items-center h-44">
     <div class="social-icons  flex justify-center mt-2">
       <a
         href="https://www.facebook.com/vonaugustproject"
@@ -102,7 +102,7 @@ const { title } = Astro.props;
       </a>
     </div>
 
-    <p class="bradford-italic text-lg">
+    <p class="bradford-italic text-sm md:text-lg">
       © von august {new Date().getFullYear()}
     </p>
   </footer>
