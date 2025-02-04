@@ -17,7 +17,7 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
       - name: Install, build, and upload your site
-        uses: withastro/action@v2
+        uses: withastro/action@v3
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
         with:
@@ -35,7 +35,7 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
       - name: Download build artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: github-pages-${{ github.run_id }}
           path: ./dist
